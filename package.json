@@ -1,0 +1,25 @@
+{
+  "name": "nodejs-express-nz1904",
+  "version": "1.0.0",
+  "description": "1. 创建了远程仓库\r 2. 克隆到本地电脑\r 3. 做一些项目初始化的一些操作\r 4. 创建一个 .gitignore 文件，对不需要版本管理的文件做忽略\r 5. 基本机构搭建好之后，做一次版本提交",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TMF321/nodejs-express-NZ1904.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TMF321/nodejs-express-NZ1904/issues"
+  },
+  "homepage": "https://github.com/TMF321/nodejs-express-NZ1904#readme",
+  "dependencies": {
+    "apidoc": "^0.20.1",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.6"
+  }
+}
