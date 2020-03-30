@@ -45,3 +45,27 @@ $ apidoc -i ./routers -o ./public/docs
 ```
 
 5. 访问文档
+
+## 五、重构与改进
+
+### 1. 期待能够统一的去做错误处理
+
+在 sever.js 定义一个错误处理中间件。 放在最后
+
+
+```javascript
+app.use(function(err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).send("Something broke!");
+});
+```
+
+为了能够处理 async await 产生的异常，还需要去使用一个依赖包
+express-async-errors
+
+
+```bash
+$ npm install express-async-errors
+```
+
+在server.js 中头午引入这个包即可
