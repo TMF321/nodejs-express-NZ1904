@@ -27,7 +27,7 @@ function renderNavbar(){
     //登录成功之后我会将token信息写入到cookie中，所以这块就从cookie中获取token来判断是否登录了
     //操作cookie 懒得自己去封装cookie的函数。这边直接采用js-cookie这个插件
     var html ="";
-    if(Cookie.get("token")){
+    if(Cookies.get("token")){
         //存在
         html=`
         <li class="nav-item">
@@ -68,7 +68,7 @@ function renderNavbar(){
         //删除 cookie 中的token
         //去首页
 
-        Cookie.remove("token");
+        Cookies.remove("token");
         window.location.href = "/post/index.html";
     })
 }
@@ -77,7 +77,7 @@ function renderNavbar(){
  * 判断是否有登陆
 */
 function isLogined() {
-    return Cookie.get("token");
+    return Cookies.get("token");
 }
 
 
