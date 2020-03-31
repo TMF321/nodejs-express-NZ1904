@@ -69,3 +69,46 @@ $ npm install express-async-errors
 ```
 
 在server.js 中头午引入这个包即可
+
+## 六、api 接口的校验
+
+创建帖子时，必须登录才可以创建。对后端的 api 接口来说，也就是必须在请求头中携带一个 token 。我们校验 token 是否 OK.
+
+ok 的话才允许你创建帖子。
+
+否则不能创建帖子，并返回 401 状态码
+
+## 七、每个帖子需要有一个作者
+
+数据库集合间的关系问题
+
+一个帖子属于一个用户
+
+一个用户可以拥有多个帖子
+
+
+
+mongodb 是一种非关系型数据库。能实现集合间的关系吗？
+
+MongoDB 3.2 之后，也有像 sql 里 join 的聚合操作，那就是 [$lookup](https://docs.mongodb.com/manual/reference/operator/aggregation/lookup/) 
+
+而 Mongoose，拥有更强大的 populate()
+
+
+
+帖子表
+
+| id   | title | content | userId |
+| ---- | ----- | ------- | ------ |
+| 1    | 早餐  | 西瓜    | 2      |
+| 2    | 午餐  | 香蕉    | 1      |
+| 3    | 晚餐  | 屁      | 3      |
+
+用户表
+
+| id   | username | password |
+| ---- | -------- | -------- |
+| 1    | admin    | admin    |
+| 2    | zhangsan | 123456   |
+| 3    | lisi     | 123456   |
+

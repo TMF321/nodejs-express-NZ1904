@@ -31,12 +31,7 @@ exports.index = async(req, res) => {
   //                                   title = 李四  new RegExp(title) => /李四/
   // 为什么这里用这种模板字符串不行 `/${title}/` =>  "/李四/"  这时就不是正则表达式，做的是精准匹配
   //          /`${title}`/    /"张三"/
-
-  //populate(字段名， 字段选择) 中文意思叫做填充，接受的userId 是 PostModel 的 schema 中定义的一个字段名字
-  //并且这个userId 字段关联的是user模型
-  //所以这块会将 userId 填充为对应的用户信息
   const data = await PostModel.find({ title: new RegExp(title)})
-  .populate("userId",["nickname","email"])
   .skip((pageNum - 1) * pageSize)
   .limit(pageSize);
 
@@ -175,9 +170,6 @@ exports.show = async (req, res) => {
  //Model.find() => []
 //  Model.findOne() => {}
 
-const data = await (await PostModel.findOne({ _id: id})).populated("userId", [
-    "nickname",
-    "email"
-]);
+const data = await PostModel.findOne({ _id: id});
 res.send({ code: 0, msg: "ok" , data});
 }

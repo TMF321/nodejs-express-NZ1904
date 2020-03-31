@@ -19,7 +19,18 @@ const postSchema = new mongoose.Schema(
         /**
          * 帖子内容
         */
-       content: {type: String ,required: true}
+       content: {type: String ,required: true},
+        /**
+         * 用户id，关联的是 users 集合
+         * 在mongoose中， 不说集合，说模型
+         * 
+         * type 固定用ObjectId
+         *     mongoose.Schema.Types.ObjectId
+         * mongoose.SchemaTypes.ObjectId
+         * 
+         * ref 关联的是那个模型 也就是 mongoose.model() 时传递的第一个参数
+        */
+       userId: { type: mongoose.SchemaTypes.ObjectId, ref: "user", required: true}
     },{
         // timestamps: true, 会多出两个字段 createdAt   updatedAt
         timestamps: true
