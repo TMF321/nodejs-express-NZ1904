@@ -47,13 +47,31 @@ $(function() {
 
     //删除功能
     $(".container").on("click", "#delete-post", function(){
+      // 判断是否有登陆
+      if(!isLogined()){
+        // 没有登录
+        alert("请登录");
+        window.location.href = "/login.html";
+        return;
+      }
+
+      // 二次确认是否删除呢
+      if(!confirm("你确认要删除么？")){
+        //点击取消，那就删除
+        return;
+      }
+
       let url = `http://localhost:7778/posts/${hrefId}`;
       $.ajax({
         url,
         type: "delete",
+        headers: {
+          Authorization: Cookies.get("token")
+        },
         success:function(res) {
           if(res.code == 0) {
-            window.location.href = "./index.html"
+            alert("删除成功");
+            window.location.href = "./index.html";
           }else{
             console.log(res);
           }

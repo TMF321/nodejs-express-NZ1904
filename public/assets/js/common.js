@@ -19,6 +19,24 @@ function getHerFId(herf) {
 }
 
 /**
+ * 获取当前登录用户的基本信息
+*/
+function getUserInfo(){
+  return new Promise((resolve, reject) =>{
+    $.ajax({
+      url:"http://localhost:7778/getInfo",
+      type: "GET",
+      headers: {
+        Authorization: Cookies.get("token")
+      },
+      success: function(res) {
+        resolve(res);
+      }
+    })
+  })
+}
+
+/**
  * 渲染右侧 navbar的
 */
 
@@ -29,6 +47,10 @@ function renderNavbar(){
     var html ="";
     if(Cookies.get("token")){
         //存在
+
+        //获取用户的基本信息，这个操作可能在前端会多次使用，所以不要再这里直接写死，而是去抽离一个公共方法
+        const res = await getUserInfo();
+        //渲染
         html=`
         <li class="nav-item">
         <a href="/post/create.html" class="nav-link">
@@ -38,7 +60,7 @@ function renderNavbar(){
   
       <li class="nav-item dropdown">
         <a href="javascript:;" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown">
-          <img src="/assets/img/avatar.png" class="rounded" width="30" height="30" alt="" />
+          <img src="${res.data.avatar}" class="rounded" width="30" height="30" alt="" />
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" href="/user/settings/profile/edit.html">Profile</a>

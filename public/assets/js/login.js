@@ -18,7 +18,7 @@ $(function(){
                 //登录成功
                 //1.将token信息写入到cookie中
                 //跳转到首页帖子列表页
-                Cookie.set("token", res.token);
+                Cookies.set("token", res.token);
 
 
                 window.location.href = "/post/index.html";

@@ -2,7 +2,7 @@
 // 一个中间件其实就是一个中间件函数，接受到 req, res, next 这三个参数的函数
 const jsonwebtoken = require("jsonwebtoken");
 
-module.exports = (req, res , next) => {
+module.exports = (req, res, next) => {
     //获得请求头中的Authorization。得到的值就是一个token
     const token = req.get("Authorization");
 
