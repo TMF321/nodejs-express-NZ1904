@@ -1,7 +1,7 @@
 $(function(){
     $("#login-btn").click(function(){
         $.ajax({
-            url:"http://localhost:7778/login",
+            url:"/login",
             type: "POST",
             data: {
                 email:$("#inputEmail").val(),

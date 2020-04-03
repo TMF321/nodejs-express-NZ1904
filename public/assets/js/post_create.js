@@ -6,7 +6,7 @@ $(function(){
    
     $("#create-post").click(() => {
         $.ajax({
-            url:`http://localhost:7778/posts`,
+            url:`/posts`,
             type: "post",
             data: {
                 title:$("#form-title").val(),

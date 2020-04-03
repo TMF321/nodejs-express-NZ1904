@@ -24,7 +24,7 @@ function getHerFId(herf) {
 function getUserInfo(){
   return new Promise((resolve, reject) =>{
     $.ajax({
-      url:"http://localhost:7778/getInfo",
+      url:"/getInfo",
       type: "GET",
       headers: {
         Authorization: Cookies.get("token")

@@ -136,7 +136,7 @@ exports.update = async (req, res) => {
          fs.writeFileSync(newFilepath, fileData);
 
          //给updateData中设置avatar
-         updateData.avatar = `http://localhost:7778/${newFilename}`;
+         updateData.avatar = `${process.env.BASEURL}/${newFilename}`;
      } 
 
      //修改数据库

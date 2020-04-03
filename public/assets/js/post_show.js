@@ -19,7 +19,7 @@ $(function() {
     let hrefId = getHerfId(window.location.href);
 
     //直接发送ajax请求获取详情数据
-    var url = `http://localhost:7778/posts/${hrefId}`;
+    var url = `/posts/${hrefId}`;
     $.get(url ,function(res) {
         if(res.code === 0) {
             var data = res.data;
@@ -61,7 +61,7 @@ $(function() {
         return;
       }
 
-      let url = `http://localhost:7778/posts/${hrefId}`;
+      let url = `/posts/${hrefId}`;
       $.ajax({
         url,
         type: "delete",
